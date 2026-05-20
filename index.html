@@ -6,6 +6,107 @@
     <title>Jogo dos Cavalos</title>
 </head>
 <body>
+    <div style="display: block;" id="divEscolherCavalo">
+        <h3>
+            Escolha o cavalo:
+            <select id="selectCavalo">
+                <option value="0">Escolha</option>
+                <option value="1">Cavalo 1</option>
+                <option value="2">Cavalo 2</option>
+                <option value="3">Cavalo 3</option>
+                <option value="4">Cavalo 4</option>
+                <option value="5">Cavalo 5</option>
+            </select>
+        </h3>
     
+        <h3>
+            Valor a apostar:
+            <input type="number" placeholder="R$ 150.00" id="iptValorAposta">
+        </h3>
+    
+        <button onclick="apostar()">Apostar</button>
+    </div>
+
+    <div id="resultado">
+
+    </div>
+
 </body>
+
+<script>
+    let vetorCavalos = [
+        {
+            numCavalo: 1,
+            voltas: [],
+            tempoTotal: 0, 
+        },
+        {
+            numCavalo: 2,
+            voltas: [],
+            tempoTotal: 0, 
+        },
+        {
+            numCavalo: 3,
+            voltas: [],
+            tempoTotal: 0, 
+        },
+        {
+            numCavalo: 4,
+            voltas: [],
+            tempoTotal: 0, 
+        },
+        {
+            numCavalo: 5,
+            voltas: [],
+            tempoTotal: 0, 
+        }
+    ];
+
+    function apostar() {
+        let cavaloEscolhido = selectCavalo.value;
+        let valorApostar = Number(iptValorAposta.value);
+
+        if (cavaloEscolhido == 0) {
+            alert('Escolha um cavalo.');
+        } else if (valorApostar <= 0 || valorApostar == '') {
+            alert('Escolha um valor válido para apostar.');
+        } else {
+            divEscolherCavalo.style.display = 'none';
+            resultado.style.display = 'block';
+            for (let i = 0; i < 7; i++) {
+                let numAleatorio1 = ((Math.random() * 2) + 7).toFixed(1);
+                let numAleatorio2 = ((Math.random() * 2) + 7).toFixed(1);
+                let numAleatorio3 = ((Math.random() * 2) + 7).toFixed(1);
+                let numAleatorio4 = ((Math.random() * 2) + 7).toFixed(1);
+                let numAleatorio5 = ((Math.random() * 2) + 7).toFixed(1);
+
+                vetorCavalos[0].voltas.push(numAleatorio1);
+                vetorCavalos[1].voltas.push(numAleatorio2);
+                vetorCavalos[2].voltas.push(numAleatorio3);
+                vetorCavalos[3].voltas.push(numAleatorio4);
+                vetorCavalos[4].voltas.push(numAleatorio5);
+
+                vetorCavalos[0].tempoTotal += Number(numAleatorio1);
+                vetorCavalos[1].tempoTotal += Number(numAleatorio2);
+                vetorCavalos[2].tempoTotal += Number(numAleatorio3);
+                vetorCavalos[3].tempoTotal += Number(numAleatorio4);
+                vetorCavalos[4].tempoTotal += Number(numAleatorio5);
+
+                resultado.innerHTML += `
+                <br> Volta [${i + 1}] <br>
+                Cavalo ${vetorCavalos[0].numCavalo} - Tempo da Volta: ${vetorCavalos[0].voltas[i]} - Tempo total: ${(vetorCavalos[0].tempoTotal).toFixed(1)} <br>
+                Cavalo ${vetorCavalos[1].numCavalo} - Tempo da Volta: ${vetorCavalos[1].voltas[i]} - Tempo total: ${(vetorCavalos[1].tempoTotal).toFixed(1)} <br>
+                Cavalo ${vetorCavalos[2].numCavalo} - Tempo da Volta: ${vetorCavalos[2].voltas[i]} - Tempo total: ${(vetorCavalos[2].tempoTotal).toFixed(1)} <br>
+                Cavalo ${vetorCavalos[3].numCavalo} - Tempo da Volta: ${vetorCavalos[3].voltas[i]} - Tempo total: ${(vetorCavalos[3].tempoTotal).toFixed(1)} <br>
+                Cavalo ${vetorCavalos[4].numCavalo} - Tempo da Volta: ${vetorCavalos[4].voltas[i]} - Tempo total: ${(vetorCavalos[4].tempoTotal).toFixed(1)} <br>
+                `;
+
+            }
+
+            
+        
+        }
+    }
+</script>
+
 </html>
