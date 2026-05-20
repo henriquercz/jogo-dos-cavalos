@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jogo dos Cavalos</title>
 </head>
+
 <body>
     <div style="display: block;" id="divEscolherCavalo">
         <h3>
@@ -18,12 +20,12 @@
                 <option value="5">Cavalo 5</option>
             </select>
         </h3>
-    
+
         <h3>
             Valor a apostar:
             <input type="number" placeholder="R$ 150.00" id="iptValorAposta">
         </h3>
-    
+
         <button onclick="apostar()">Apostar</button>
     </div>
 
@@ -38,29 +40,32 @@
         {
             numCavalo: 1,
             voltas: [],
-            tempoTotal: 0, 
+            tempoTotal: 0,
         },
         {
             numCavalo: 2,
             voltas: [],
-            tempoTotal: 0, 
+            tempoTotal: 0,
         },
         {
             numCavalo: 3,
             voltas: [],
-            tempoTotal: 0, 
+            tempoTotal: 0,
         },
         {
             numCavalo: 4,
             voltas: [],
-            tempoTotal: 0, 
+            tempoTotal: 0,
         },
         {
             numCavalo: 5,
             voltas: [],
-            tempoTotal: 0, 
+            tempoTotal: 0,
         }
     ];
+
+    var vetorTemposTotais = [];
+    var vetorPodio = [];
 
     function apostar() {
         let cavaloEscolhido = selectCavalo.value;
@@ -103,8 +108,55 @@
 
             }
 
-            
+
+            let primeiro_ind = 0;
+            let segundo_ind = 0;
+            let terceiro_ind = 0;
+
+
+
+            for (let i = 0; i < vetorCavalos.length; i++) {
+                vetorTemposTotais.push(vetorCavalos[i].tempoTotal);
+            }
+
+            let primeiro = 100;
+            let segundo = vetorTemposTotais[0];
+            let terceiro = vetorTemposTotais[0];
+
+
+            for (let i = 0; i < vetorCavalos.length; i++) {
+                if (primeiro > vetorTemposTotais[i]) {
+                    primeiro = vetorTemposTotais[i];
+                    primeiro_ind = i;
+                }
+            }
+
         
+            for (let i = 0; i < vetorCavalos.length; i++) {
+                if (i != primeiro_ind && segundo > vetorTemposTotais[i]) {
+                    segundo = vetorTemposTotais[i];
+                    segundo_ind = i;
+                }
+            }
+
+            
+            for (let i = 0; i < vetorCavalos.length; i++) {
+                if (i != primeiro_ind && i != segundo_ind && terceiro > vetorTemposTotais[i]) {
+                    terceiro = vetorTemposTotais[i];
+                    terceiro_ind = i;
+                }
+            }
+
+            vetorPodio.push(primeiro);
+            vetorPodio.push(segundo);
+            vetorPodio.push(terceiro);
+            resultado.innerHTML += `<br> Primeiro: Cavalo 0${vetorCavalos[primeiro_ind].numCavalo} | Tempo Total: ${(vetorPodio[0]).toFixed(1)}  <br>
+           Segundo: Cavalo 0${vetorCavalos[segundo_ind].numCavalo} | Tempo Total: ${(vetorPodio[1]).toFixed(1)} <br>
+           Terceiro: Cavalo 0${vetorCavalos[terceiro_ind].numCavalo} | Tempo Total: ${(vetorPodio[2]).toFixed(1)} <br>`;
+
+
+
+
         }
     }
 </script>
