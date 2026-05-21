@@ -45,6 +45,7 @@ function apostar() {
     } else {
         divEscolherCavalo.style.display = 'none';
         resultado.style.display = 'block';
+        rere.style.display = 'block';
         for (let i = 0; i < 7; i++) {
             let numAleatorio1 = ((Math.random() * 2) + 7).toFixed(1);
             let numAleatorio2 = ((Math.random() * 2) + 7).toFixed(1);
@@ -161,4 +162,5 @@ function apostar() {
 function voltar() {
     resultado.style.display = 'none';
     divEscolherCavalo.style.display = 'block';
+    rere.style.display = 'none'
 }

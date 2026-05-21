@@ -1,0 +1,195 @@
+
+*{
+padding: 0;
+margin: 0;
+}
+
+body{
+    z-index: -10;
+}
+.fundo{
+background-color: rgb(43, 230, 230);
+background-image: url(imagens/plano2.png);
+background-position: central ;
+background-size: cover;
+height: 976px;
+width: 100%;
+
+filter: blur(0px);
+position: relative;
+
+z-index: 0;
+
+display: flex;
+flex-direction: column;
+justify-content: flex-start;
+align-items: center;
+
+}
+
+.ficha{
+
+    position: absolute;
+    margin-left: 1500px ;
+}
+
+.titulo{
+height: 390px;
+width: 430px;
+background-image: url(imagens/logo.png);
+background-position: center;
+background-size: cover;
+
+
+margin-top: 50px;
+
+}
+
+.titulo2{
+height: 270px;
+width: 350px;
+background-image: url(imagens/logo.png);
+background-position: center;
+background-size: cover;
+
+position: absolute;
+}
+
+.box{
+    border-radius: 30px;
+    background-color: rgba(0, 0, 0, 0.834);
+
+    height: 680px;
+    width:700px ;
+    margin-top: 200px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    
+}
+
+.botao{
+    height: 120px;
+    width: 400px;
+    background-image: url(imagens/BOTAO.png);
+    background-position: center ;
+    background-size: cover;
+    margin-top: 90px;
+
+
+    font-size: 28px;
+    font-family: 'Pixelify Sans', sans-serif;
+    font-weight: 700;
+    
+    
+    z-index: 20;
+    transition: 0.3s;
+    position: absolute;
+}
+
+.botao:hover{
+    transform: scale(1.10)
+}
+
+.box_menor{
+ background-color: rgba(255, 255, 255, 0.834);
+ border-radius: 20px;
+ height: 80px;
+ width: 600px ;
+ margin-top: 20px;
+ transition: 0.3s;
+
+ display: flex;
+ align-items: center;
+ justify-items: center;
+
+}
+
+.box_menor:hover{
+    transform: scale(1.10)
+}
+
+
+
+.cavalo{
+    border-radius: 100px;
+    background-color: white;
+
+    height: 70px;
+    width: 70px;
+
+    margin: 5px;
+    margin-left: 10px;
+
+    background-image: url(imagens/cavalo1.png);
+    background-position: center ;
+    background-size:225px 150px;
+}
+
+p{
+    font-size: 25px;
+    margin-left: 15px;}
+
+.box_menor input{
+    margin-left: 470px;
+    width: 170px;
+    height: 40px;
+
+    font-size: 20px;
+    text-align: center;
+    border-radius: 20px;
+    position: absolute;
+    margin-top: 10px;
+}
+
+.valor{
+    margin-left: 0px;
+    width: 170px;
+    height: 40px;
+
+    font-size: 20px;
+    text-align: center;
+    border-radius: 20px;
+    position: absolute;
+    margin-top: 550px;
+
+}
+
+.box_menor input:checked{
+    background-color: rgb(0, 38, 255);
+}
+
+.result{
+    font-size: 20px;
+    height: 100px;
+    width: 20px;
+    color: rgb(0, 0, 0);
+    border-radius: 20px;
+    margin-top: 30px;
+    text-align: center;
+    overflow: auto;
+    scrollbar-width: none;
+}
+
+.aposta{
+    width: 180px;
+    height: 80px;
+
+    position: absolute;
+    margin-top: 610px;
+    margin-left: 0px;
+
+    transition: 0.3s;
+
+    border: none;
+    background-color: rgba(240, 248, 255, 0);
+    background-image: url(imagens/apostar.png);
+    background-position: center;
+    background-size: cover;
+}
+.aposta:hover{
+    transform: scale(1.10);
+}

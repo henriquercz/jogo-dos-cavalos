@@ -6,37 +6,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jogo dos Cavalos</title>
     <script src="script.js"></script>
+    <link rel="stylesheet" href="jogo-dos-cavalos 1/site.css">
 </head>
 
 <body>
-    <div style="display: block;" id="divEscolherCavalo">
+    <div class="fundo">
+        <div class="ficha">
+            <h2>Créditos Disponíveis: <span id="spanCreditos"></span></h2>
+        </div>
+        <div class="titulo2"></div>
+        <div class="box">
+            <div style="display: block;" id="divEscolherCavalo">
+                <h3 class="box_menor">
+                    <div class="cavalo"></div>Escolha o cavalo:
+                    <select id="selectCavalo" >
+                        <option value="0">Escolha</option>
+                        <option value="1">Cavalo 1</option>
+                        <option value="2">Cavalo 2</option>
+                        <option value="3">Cavalo 3</option>
+                        <option value="4">Cavalo 4</option>
+                        <option value="5">Cavalo 5</option>
+                    </select>
+                </h3>
 
-        <h2>Créditos Disponíveis: <span id="spanCreditos"></span></h2>
+                <h3>
+                    Valor a apostar:
+                    <input type="number" class="valor" placeholder="Ex: 5" id="iptValorAposta">
+                </h3>
 
-        <h3>
-            Escolha o cavalo:
-            <select id="selectCavalo">
-                <option value="0">Escolha</option>
-                <option value="1">Cavalo 1</option>
-                <option value="2">Cavalo 2</option>
-                <option value="3">Cavalo 3</option>
-                <option value="4">Cavalo 4</option>
-                <option value="5">Cavalo 5</option>
-            </select>
-        </h3>
+                <button class="aposta" onclick="apostar()"></button>
 
-        <h3>
-            Valor a apostar:
-            <input type="number" placeholder="Ex: 5" id="iptValorAposta">
-        </h3>
 
-        <button onclick="apostar()">Apostar</button>
+
+
+            </div>
+             <div class="result" id="rere"><div id="resultado" style="display: none;">
+                <div id="resultadoConteudo"></div>           
+                <button onclick="voltar()">Voltar</button>
+
+            </div></div>
+
+        </div>
     </div>
 
-    <div id="resultado" style="display: none;">
-        <div id="resultadoConteudo"></div>
-        <button onclick="voltar()">Voltar</button>
-    </div>
+
+
 
 </body>
 
