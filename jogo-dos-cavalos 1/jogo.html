@@ -1,43 +1,68 @@
-
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="site.css">
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="script.js">
-    <link rel="stylesheet" href="">
+    <script src="script.js"></script>
     <title>Corrida de Cavalos</title>
 </head>
+
 <body>
     <div class="fundo">
+        <div class="ficha">
+            <h2>Créditos Disponíveis: <span id="spanCreditos"></span></h2>
+        </div>
         <div class="titulo2"></div>
         <div class="box">
-            <div id="cavalo1" class="box_menor" style="margin-top: 50px;"> <div class="cavalo"></div><p>Cavalo 1</p>
-                <input type="radio" id="aposta_cavalo1" value="1" name="opcao" placeholder="R$"></div>
+            <div id="divEscolherCavalo">
+                <div id="cavalo1" class="box_menor" style="margin-top: 50px;">
+                    <div class="cavalo"></div>
+                    <p>Cavalo 1</p>
+                    <input type="radio" id="aposta_cavalo1" value="1" name="opcao" placeholder="R$">
+                </div>
 
-                 <div id="cavalo2" class="box_menor"> <div class="cavalo"></div><p>Cavalo 2</p>
-                 <input type="radio" id="aposta_cavalo2" value="2" name="opcao" placeholder="R$"></div>
+                <div id="cavalo2" class="box_menor">
+                    <div class="cavalo"></div>
+                    <p>Cavalo 2</p>
+                    <input type="radio" id="aposta_cavalo2" value="2" name="opcao" placeholder="R$">
+                </div>
 
-                  <div id="cavalo3" class="box_menor"> <div class="cavalo"></div><p>Cavalo 3</p>
-                  <input type="radio" id="aposta_cavalo3" value="3" name="opcao" placeholder="R$"></div>
+                <div id="cavalo3" class="box_menor">
+                    <div class="cavalo"></div>
+                    <p>Cavalo 3</p>
+                    <input type="radio" id="aposta_cavalo3" value="3" name="opcao" placeholder="R$">
+                </div>
 
-                  <div id="cavalo4" class="box_menor"> <div class="cavalo"></div><p>Cavalo 4</p> 
-                  <input type="radio" id="aposta_cavalo4" value="4"name="opcao" placeholder="R$"></div>
+                <div id="cavalo4" class="box_menor">
+                    <div class="cavalo"></div>
+                    <p>Cavalo 4</p>
+                    <input type="radio" id="aposta_cavalo4" value="4" name="opcao" placeholder="R$">
+                </div>
 
-                   <div id="cavalo5" class="box_menor"> <div class="cavalo"></div><p>Cavalo 5</p>
-                   <input type="radio" id="aposta_cavalo5" value="5" name="opcao" placeholder="R$"></div>
-
-                    <input type="number" placeholder="Valor de aposta" class="valor">
-                   <button class="aposta" onclick="apostar()"></button>
-        </div>
-            <div id="EscolherCavalo">
-                 
+                <div id="cavalo5" class="box_menor">
+                    <div class="cavalo"></div>
+                    <p>Cavalo 5</p>
+                    <input type="radio" id="aposta_cavalo5" value="5" name="opcao" placeholder="R$">
+                </div>
             </div>
-           <div class="result"> <div id="resultado"></div></div>
 
+            <input type="number" placeholder="Valor de aposta" class="valor" id="iptValorAposta">
+            <button class="aposta" onclick="apostar()"></button>
+
+            <div class="result" id="resultado">
+                <div id="resultadoConteudo"></div>
+            </div>
         </div>
+
+    </div>
     </div>
 </body>
+<script>
+    var creditosTotais = 10;
+    spanCreditos.innerHTML = creditosTotais;
+</script>
+
 </html>

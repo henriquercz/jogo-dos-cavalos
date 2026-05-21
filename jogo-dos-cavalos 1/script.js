@@ -1,6 +1,3 @@
-
-
-
 function apostar() {
     resultadoConteudo.innerHTML = '';
     let vetorCavalos = [
@@ -33,7 +30,7 @@ function apostar() {
 
     let vetorTemposTotais = [];
     let vetorPodio = [];
-    let cavaloEscolhido = selectCavalo.value;
+    let cavaloEscolhido = document.querySelector('input[name="opcao"]:checked');
     let valorApostar = Number(iptValorAposta.value);
 
     if (cavaloEscolhido == 0) {
@@ -45,7 +42,6 @@ function apostar() {
     } else {
         divEscolherCavalo.style.display = 'none';
         resultado.style.display = 'block';
-        rere.style.display = 'block';
         for (let i = 0; i < 7; i++) {
             let numAleatorio1 = ((Math.random() * 2) + 7).toFixed(1);
             let numAleatorio2 = ((Math.random() * 2) + 7).toFixed(1);
@@ -66,7 +62,7 @@ function apostar() {
             vetorCavalos[4].tempoTotal += Number(numAleatorio5);
 
             resultadoConteudo.innerHTML += `
-                <br> Volta [${i + 1}] <br>
+                <br> Volta ${i + 1} <br>
                 Cavalo ${vetorCavalos[0].numCavalo} - Tempo da Volta: ${vetorCavalos[0].voltas[i]} - Tempo total: ${(vetorCavalos[0].tempoTotal).toFixed(1)} <br>
                 Cavalo ${vetorCavalos[1].numCavalo} - Tempo da Volta: ${vetorCavalos[1].voltas[i]} - Tempo total: ${(vetorCavalos[1].tempoTotal).toFixed(1)} <br>
                 Cavalo ${vetorCavalos[2].numCavalo} - Tempo da Volta: ${vetorCavalos[2].voltas[i]} - Tempo total: ${(vetorCavalos[2].tempoTotal).toFixed(1)} <br>
@@ -161,6 +157,6 @@ function apostar() {
 
 function voltar() {
     resultado.style.display = 'none';
+    result.style.display=  'none';
     divEscolherCavalo.style.display = 'block';
-    rere.style.display = 'none'
 }
