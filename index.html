@@ -9,6 +9,9 @@
 
 <body>
     <div style="display: block;" id="divEscolherCavalo">
+
+        <h2>Créditos Disponíveis: <span id="spanCreditos"></span></h2>
+
         <h3>
             Escolha o cavalo:
             <select id="selectCavalo">
@@ -23,51 +26,56 @@
 
         <h3>
             Valor a apostar:
-            <input type="number" placeholder="R$ 150.00" id="iptValorAposta">
+            <input type="number" placeholder="Ex: 5" id="iptValorAposta">
         </h3>
 
         <button onclick="apostar()">Apostar</button>
     </div>
 
-    <div id="resultado">
-
+    <div id="resultado" style="display: none;">
+        <div id="resultadoConteudo"></div>
+        <button onclick="voltar()">Voltar</button>
     </div>
 
 </body>
 
 <script>
-    let vetorCavalos = [
-        {
-            numCavalo: 1,
-            voltas: [],
-            tempoTotal: 0,
-        },
-        {
-            numCavalo: 2,
-            voltas: [],
-            tempoTotal: 0,
-        },
-        {
-            numCavalo: 3,
-            voltas: [],
-            tempoTotal: 0,
-        },
-        {
-            numCavalo: 4,
-            voltas: [],
-            tempoTotal: 0,
-        },
-        {
-            numCavalo: 5,
-            voltas: [],
-            tempoTotal: 0,
-        }
-    ];
-
-    var vetorTemposTotais = [];
-    var vetorPodio = [];
-
+    var creditosTotais = 10;
+    spanCreditos.innerHTML = creditosTotais;
+    
+    
     function apostar() {
+        resultadoConteudo.innerHTML = '';
+        let vetorCavalos = [
+            {
+                numCavalo: 1,
+                voltas: [],
+                tempoTotal: 0,
+            },
+            {
+                numCavalo: 2,
+                voltas: [],
+                tempoTotal: 0,
+            },
+            {
+                numCavalo: 3,
+                voltas: [],
+                tempoTotal: 0,
+            },
+            {
+                numCavalo: 4,
+                voltas: [],
+                tempoTotal: 0,
+            },
+            {
+                numCavalo: 5,
+                voltas: [],
+                tempoTotal: 0,
+            }
+        ];
+    
+        let vetorTemposTotais = [];
+        let vetorPodio = [];
         let cavaloEscolhido = selectCavalo.value;
         let valorApostar = Number(iptValorAposta.value);
 
@@ -75,6 +83,8 @@
             alert('Escolha um cavalo.');
         } else if (valorApostar <= 0 || valorApostar == '') {
             alert('Escolha um valor válido para apostar.');
+        } else if (valorApostar > creditosTotais) {
+            alert('Você não pode apostar mais do que os créditos totais.');
         } else {
             divEscolherCavalo.style.display = 'none';
             resultado.style.display = 'block';
@@ -97,7 +107,7 @@
                 vetorCavalos[3].tempoTotal += Number(numAleatorio4);
                 vetorCavalos[4].tempoTotal += Number(numAleatorio5);
 
-                resultado.innerHTML += `
+                resultadoConteudo.innerHTML += `
                 <br> Volta [${i + 1}] <br>
                 Cavalo ${vetorCavalos[0].numCavalo} - Tempo da Volta: ${vetorCavalos[0].voltas[i]} - Tempo total: ${(vetorCavalos[0].tempoTotal).toFixed(1)} <br>
                 Cavalo ${vetorCavalos[1].numCavalo} - Tempo da Volta: ${vetorCavalos[1].voltas[i]} - Tempo total: ${(vetorCavalos[1].tempoTotal).toFixed(1)} <br>
@@ -175,14 +185,25 @@
             vetorPodio.push(primeiro);
             vetorPodio.push(segundo);
             vetorPodio.push(terceiro);
-            resultado.innerHTML += `<br> Primeiro: Cavalo 0${vetorCavalos[primeiro_ind].numCavalo} | Tempo Total: ${(vetorPodio[0]).toFixed(1)}  <br>
+            resultadoConteudo.innerHTML += `<br> Primeiro: Cavalo 0${vetorCavalos[primeiro_ind].numCavalo} | Tempo Total: ${(vetorPodio[0]).toFixed(1)}  <br>
            Segundo: Cavalo 0${vetorCavalos[segundo_ind].numCavalo} | Tempo Total: ${(vetorPodio[1]).toFixed(1)} <br>
            Terceiro: Cavalo 0${vetorCavalos[terceiro_ind].numCavalo} | Tempo Total: ${(vetorPodio[2]).toFixed(1)} <br>`;
 
-
-
-
+            if (cavaloEscolhido == primeiro_ind + 1) {
+                resultadoConteudo.innerHTML += `<br> Parabéns, você ganhou R$ ${(valorApostar * 2).toFixed(2)}.`;
+                creditosTotais += valorApostar;
+                spanCreditos.innerHTML = creditosTotais;
+            } else {
+                resultadoConteudo.innerHTML += `<br> Que pena, você perdeu R$ ${(valorApostar).toFixed(2)}.`;
+                creditosTotais -= valorApostar;
+                spanCreditos.innerHTML = creditosTotais;
+            }   
         }
+    }
+
+    function voltar() {
+        resultado.style.display = 'none';
+        divEscolherCavalo.style.display = 'block';
     }
 
 </script>
