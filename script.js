@@ -1,89 +1,159 @@
 let vetorCavalos = [];
 function apostar() {
     resultadoConteudo.innerHTML = '';
+
     for (let i = 0; i < vetorCavalos.length; i++) {
         vetorCavalos[i].voltas = [];
         vetorCavalos[i].tempoTotal = 0;
     }
 
+    let cavaloEscolhido =
+        document.querySelector('input[name="opcao"]:checked');
 
-    let vetorTemposTotais = [];
-    let vetorPodio = [];
-    let cavaloEscolhido = document.querySelector('input[name="opcao"]:checked');
-    let valorApostar = Number(iptValorAposta.value);
+    let valorApostar =
+        Number(iptValorAposta.value);
 
     if (cavaloEscolhido == null) {
         alert('Escolha um cavalo.');
-    } else if (valorApostar <= 0 || valorApostar == '') {
-        alert('Escolha um valor válido para apostar.');
-    } else if (valorApostar > creditosTotais) {
-        alert('Você não pode apostar mais do que os créditos totais.');
-    } else {
-        divEscolherCavalo.style.display = 'none';
-        resultado.style.display = 'block';
-        for (let i = 0; i < qtdVoltas; i++) {
-            resultadoConteudo.innerHTML += `<br> Volta ${i + 1} <br>`;
-
-            for (let c = 0; c < vetorCavalos.length; c++) {
-                let tempoVolta = Number(((Math.random() * 2) + 7).toFixed(1));
-
-                vetorCavalos[c].voltas.push(tempoVolta);
-                vetorCavalos[c].tempoTotal += tempoVolta;
-
-                resultadoConteudo.innerHTML += `
-                    ${vetorCavalos[c].nome} - Tempo da Volta: ${tempoVolta.toFixed(1)} - Tempo total: ${vetorCavalos[c].tempoTotal.toFixed(1)} <br>
-                `;
-            }
-        }
-
-
-
-        let podio = [];
-        for (let i = 0; i < vetorCavalos.length; i++) {
-            podio.push({
-                ind: i, 
-                tempo: vetorCavalos[i].tempoTotal, 
-                ultima: vetorCavalos[i].voltas[qtdVoltas - 1]
-            });
-        }
-
-        for (let i = 0; i < podio.length - 1; i++) {
-            for (let j = 0; j < podio.length - 1 - i; j++) {
-                let atual = podio[j];
-                let proximo = podio[j + 1];
-                let trocar = false;
-
-                if (atual.tempo > proximo.tempo) {
-                    trocar = true;
-                } else if (atual.tempo == proximo.tempo) {
-                    if (atual.ultima > proximo.ultima) {
-                        trocar = true;
-                    }
-                }
-
-                if (trocar) {
-                    let aux = podio[j];
-                    podio[j] = podio[j + 1];
-                    podio[j + 1] = aux;
-                }
-            }
-        }
-
-        for (let i = 0; i < podio.length && i < 3; i++) {
-            resultadoConteudo.innerHTML += `<br> ${i + 1}º Lugar: Cavalo ${vetorCavalos[podio[i].ind].nome} | Tempo Total: ${(podio[i].tempo).toFixed(1)} <br>`;
-        }
-
-        if (Number(cavaloEscolhido.value) == podio[0].ind) {
-            resultadoConteudo.innerHTML += `<br> Parabéns, você ganhou R$ ${(valorApostar * 2).toFixed(2)}.`;
-            creditosTotais += valorApostar;
-            spanCreditos.innerHTML = creditosTotais;
-        } else {
-            resultadoConteudo.innerHTML += `<br> Que pena, você perdeu R$ ${(valorApostar).toFixed(2)}.`;
-            creditosTotais -= valorApostar;
-            spanCreditos.innerHTML = creditosTotais;
-        }
-
+        return;
     }
+
+    if (valorApostar <= 0) {
+        alert('Escolha um valor válido para apostar.');
+        return;
+    }
+
+    if (valorApostar > creditosTotais) {
+        alert('Você não pode apostar mais do que os créditos totais.');
+        return;
+    }
+
+    divEscolherCavalo.style.display = 'none';
+    resultado.style.display = 'block';
+
+    for (let volta = 0; volta < qtdVoltas; volta++) {
+
+        resultadoConteudo.innerHTML += `
+            <br>
+            <b>VOLTA ${volta + 1}</b>
+            <br><br>`;
+
+        for (let cavalo = 0; cavalo < vetorCavalos.length; cavalo++) {
+
+            let tempoVolta =
+                Number(((Math.random() * 2) + 7).toFixed(1));
+
+            vetorCavalos[cavalo].voltas.push(tempoVolta);
+
+            vetorCavalos[cavalo].tempoTotal += tempoVolta;
+
+            resultadoConteudo.innerHTML += `
+                ${vetorCavalos[cavalo].nome}
+                -
+                Volta: ${tempoVolta.toFixed(1)}
+                -
+                Total: ${vetorCavalos[cavalo].tempoTotal.toFixed(1)}
+                <br>
+            `;
+        }
+
+        let rankingParcial = [...vetorCavalos];
+
+        rankingParcial.sort(function (a, b) {
+            return a.tempoTotal - b.tempoTotal;
+        });
+
+        let diferenca =
+            rankingParcial[1].tempoTotal -
+            rankingParcial[0].tempoTotal;
+
+        resultadoConteudo.innerHTML += `
+            <br>
+            Líder:
+            <b>${rankingParcial[0].nome}</b>
+            <br>
+
+            Diferença para o 2º:
+            ${diferenca.toFixed(1)} segundos
+            <br>
+            <hr>`;
+    }
+
+    let podio = [];
+
+    for (let i = 0; i < vetorCavalos.length; i++) {
+
+        podio.push({
+            ind: i,
+            tempo: vetorCavalos[i].tempoTotal,
+            ultima:
+                vetorCavalos[i].voltas[qtdVoltas - 1]
+        });
+    }
+
+    for (let i = 0; i < podio.length - 1; i++) {
+
+        for (let j = 0; j < podio.length - 1 - i; j++) {
+
+            let trocar = false;
+
+            if (podio[j].tempo > podio[j + 1].tempo) {
+                trocar = true;
+            }
+            else if (
+                podio[j].tempo ==
+                podio[j + 1].tempo
+            ) {
+
+                if (
+                    podio[j].ultima >
+                    podio[j + 1].ultima
+                ) {
+                    trocar = true;
+                }
+            }
+
+            if (trocar) {
+
+                let aux = podio[j];
+
+                podio[j] = podio[j + 1];
+
+                podio[j + 1] = aux;
+            }
+        }
+    }
+
+    resultadoConteudo.innerHTML += `<br><h2>RESULTADO FINAL</h2>`;
+
+    for (let i = 0; i < podio.length - 2; i++) {
+
+        resultadoConteudo.innerHTML += `
+            ${i + 1}º Lugar:
+            ${vetorCavalos[podio[i].ind].nome}
+            -
+            ${podio[i].tempo.toFixed(1)}s <br>`;
+    }
+
+    if (Number(cavaloEscolhido.value)== podio[0].ind) {
+        resultadoConteudo.innerHTML += `
+            <br>
+            Você ganhou
+            R$ ${(valorApostar * 2).toFixed(2)}
+        `;
+
+        creditosTotais += valorApostar;
+    }
+    else {
+        resultadoConteudo.innerHTML += `
+            <br>
+            Você perdeu
+            R$ ${valorApostar.toFixed(2)}
+        `;
+
+        creditosTotais -= valorApostar;
+    }
+    spanCreditos.innerHTML = creditosTotais;
 }
 
 function voltar() {
