@@ -305,3 +305,29 @@ transform
     align-items: center;
     gap: 10px;
 }
+
+
+/*
+BILHETE
+*/
+
+.container-bilhete{
+    display: flex;
+    flex-direction: column;
+}
+
+.card-bilhete{
+    background-image: url(../jogo-dos-cavalos/imagens/img-bilhete.png);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 500px;
+    height: 600px;
+    text-align: center;
+}
+
+.ipt_nota{
+    margin-top: 30%;
+    color: black;
+    font-size: 36px;
+}
