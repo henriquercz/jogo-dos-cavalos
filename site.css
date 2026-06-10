@@ -64,18 +64,15 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-
-
     height: 700px;
     width: 750px;
-
     margin-top: 180px;
     padding: 20px;
-
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+    overflow: hidden;
 
 
 }
@@ -102,15 +99,30 @@ body {
 .box_menor {
     background-color: rgba(255, 255, 255, 0.834);
     border-radius: 20px;
-    height: 60px;
-    width: 600px;
+    height: auto;
+    min-height: 60px;
+    width: 90%;
+    max-width: 600px;
     margin-top: 15px;
     transition: 0.3s;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 20px;
+    padding: 10px 20px;
     box-sizing: border-box;
+    gap: 10px;
+}
+
+#divCadastroNome p {
+    font-size: 8px;
+    margin-left: 0;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+#divCadastroNome #iptNomeCavalo {
+    flex: 1;
+    min-width: 0;
 }
 
 .box_menor:hover {
@@ -256,7 +268,7 @@ transform
     border-radius: 10px;
     padding: 0 10px;
     width: 200px;
-    font-size: 16px;
+    font-size: 20px;
 }
 
 #divCadastroNome button {
@@ -269,9 +281,19 @@ transform
     font-weight: bold;
 }
 
+.divEscolherCavalo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    margin-top: 60px;
+}
+
 .divEscolherCavalo p {
     color: black;
-    font-size: 20px;
+    font-size: 10px;
 }
 
 #div_cavalos {
