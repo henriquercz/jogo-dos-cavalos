@@ -1,9 +1,9 @@
 let vetorCavalos = [];
 function apostar() {
     resultadoConteudo.innerHTML = '';
-    for (let c = 0; c < vetorCavalos.length; c++) {
-        vetorCavalos[c].voltas = [];
-        vetorCavalos[c].tempoTotal = 0;
+    for (let i = 0; i < vetorCavalos.length; i++) {
+        vetorCavalos[i].voltas = [];
+        vetorCavalos[i].tempoTotal = 0;
     }
 
 
@@ -154,35 +154,42 @@ function avancarProximaDiv() {
 
 
 function adicionarCavalo() {
-    let nomeCavalo = (iptNomeCavalo.value.trim()).toUpperCase();
-    if (vetorCavalos == qtdCavalo) {
+    let nomeCavalo = iptNomeCavalo.value.trim().toUpperCase();
 
-    }
-    else {
-        vetorCavalos.push({
-            nome: nomeCavalo,
-            voltas: [],
-            tempoTotal: 0
-        })
-
-        div_cavalos.innerHTML = '';
-
-        for (let i = 0; i < vetorCavalos.length; i++) {
-            div_cavalos.innerHTML += `<div id="cavalo${i + 1}" class="box_menor">
-                    <div class="cavalo" style="background-image: url(imagens/cavalo${i + 1}.png);"></div>
-                    <p>Cavalo: ${vetorCavalos[i].nome}</p>
-                    <input type="radio" id="aposta_cavalo3" value="3" name="opcao" placeholder="R$">
-                </div><br>`
-        }
-        if (vetorCavalos.length == qtdCavalo) {
-            apostar()
-
-        }
+    if (nomeCavalo == "") {
+        alert("Por favor, insira o nome do cavalo.");
+        return;
     }
 
-    if (getComputedStyle(dados_da_corrida).display == "block" && vetorCavalos.length == 2) {
-        fala1.style.display = "none";
-        fala2.style.display = "block";
+    if (vetorCavalos.length >= qtdCavalo) {
+        alert("Todos os cavalos já foram adicionados!");
+        return;
     }
 
+    vetorCavalos.push({
+        nome: nomeCavalo,
+        voltas: [],
+        tempoTotal: 0
+    });
+
+    iptNomeCavalo.value = "";
+
+    div_cavalos.innerHTML = '';
+    for (let i = 0; i < vetorCavalos.length; i++) {
+        div_cavalos.innerHTML += `
+            <div id="cavalo${i + 1}" class="box_menor">
+                <div class="cavalo" style="background-image: url(imagens/cavalo${i + 1}.png);"></div>
+                <p>Cavalo ${i + 1}: ${vetorCavalos[i].nome}</p>
+                <!-- O valor do radio será o índice correspondente ao cavalo no vetor (0, 1, 2...) -->
+                <input type="radio" id="aposta_cavalo${i + 1}" value="${i}" name="opcao">
+            </div><br>
+        `;
+    }
+
+    if (vetorCavalos.length == qtdCavalo) {
+        divCadastroNome.style.display = 'none';
+        iptValorAposta.style.display = 'block';
+        document.querySelector('.aposta').style.display = 'block';
+    }
 }
+
