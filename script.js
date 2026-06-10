@@ -162,6 +162,13 @@ function adicionarCavalo() {
         return;
     }
 
+    for (let i = 0; i < vetorCavalos.length; i++) {
+        if (vetorCavalos[i].nome == nomeCavalo) {
+            alert("Já existe um cavalo com este nome!");
+            return;
+        }
+    }
+
     if (vetorCavalos.length >= qtdCavalo) {
         alert("Todos os cavalos já foram adicionados!");
         return;
