@@ -37,12 +37,7 @@
                         <p> Quantidade de voltas</p><input type="number" id="ipt_quant_voltas">
                     </div>
                 </div>
-                <div style="display: flex;">
-                    <div class="card">
-                        <p> Insira valor da Aposta</p><input type="number" placeholder="Valor de aposta"
-                            id="iptValorAposta">
-                    </div>
-                </div>
+
 
 
 
@@ -58,11 +53,12 @@
                 <div id="div_cavalos">
                 </div>
 
-
+                <input type="number" style="display: none;" placeholder="Valor de aposta" class="valor"
+                    id="iptValorAposta">
+                <button class="aposta" style="display: none;" onclick="apostar()"></button>
             </div>
 
-            <input type="number" style="display: none;" placeholder="Valor de aposta" class="valor" id="iptValorAposta">
-            <button class="aposta" style="display: none;" onclick="apostar()"></button>
+
 
             <div class="result" id="resultado">
                 <div id="resultadoConteudo"></div>

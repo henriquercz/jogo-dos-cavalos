@@ -59,14 +59,21 @@ body {
 
 .box {
     border-radius: 30px;
-    background-color: rgba(0, 0, 0, 0.834);
-    height: 680px;
+    background-image: url(imagens/box_grande.png);
+    background-position: center;
+    background-size: cover;
+    height: auto;
+    min-height: 500px;
+    max-height: 90vh;
     width: 700px;
     margin-top: 200px;
+    padding: 20px;
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+    overflow-y: auto;
 }
 
 .botao {
@@ -91,15 +98,15 @@ body {
 .box_menor {
     background-color: rgba(255, 255, 255, 0.834);
     border-radius: 20px;
-    height: 80px;
+    height: 60px;
     width: 600px;
-    margin-top: 20px;
+    margin-top: 15px;
     transition: 0.3s;
     display: flex;
     align-items: center;
-    justify-items: center;
-    margin-top: 70px;
-
+    justify-content: space-between;
+    padding: 0 20px;
+    box-sizing: border-box;
 }
 
 .box_menor:hover {
@@ -129,26 +136,21 @@ p {
 }
 
 .box_menor input {
-    margin-left: 470px;
-    width: 170px;
-    height: 40px;
-    font-size: 20px;
-    text-align: center;
-    border-radius: 20px;
-    position: absolute;
-    margin-top: 10px;
+    position: relative;
+    margin: 0;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
 }
 
 .valor {
-    margin-left: 0px;
-    width: 170px;
+    width: 200px;
     height: 40px;
     font-size: 20px;
     text-align: center;
     border-radius: 20px;
-    position: absolute;
-    margin-top: 550px;
-
+    margin: 15px auto;
+    display: none;
 }
 
 .box_menor input:checked {
@@ -172,15 +174,15 @@ p {
 .aposta {
     width: 180px;
     height: 80px;
-    position: absolute;
-    margin-top: 610px;
-    margin-left: 0px;
+    margin: 10px auto;
+    display: none;
     transition: 0.3s;
     border: none;
     background-color: rgba(240, 248, 255, 0);
     background-image: url(imagens/apostar.png);
     background-position: center;
     background-size: cover;
+    cursor: pointer;
 }
 
 .aposta:hover {
@@ -258,3 +260,14 @@ transform
     color: black;
     font-size: 20px;
 }
+
+#div_cavalos {
+    max-height: 280px;
+    overflow-y: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
