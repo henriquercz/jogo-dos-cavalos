@@ -1,6 +1,11 @@
 let vetorCavalos = [];
 function apostar() {
     resultadoConteudo.innerHTML = '';
+    for (let c = 0; c < vetorCavalos.length; c++) {
+        vetorCavalos[c].voltas = [];
+        vetorCavalos[c].tempoTotal = 0;
+    }
+
 
     let vetorTemposTotais = [];
     let vetorPodio = [];
@@ -16,35 +21,21 @@ function apostar() {
     } else {
         divEscolherCavalo.style.display = 'none';
         resultado.style.display = 'block';
-        for (let i = 0; i < 7; i++) {
-            let numAleatorio1 = ((Math.random() * 2) + 7).toFixed(1);
-            let numAleatorio2 = ((Math.random() * 2) + 7).toFixed(1);
-            let numAleatorio3 = ((Math.random() * 2) + 7).toFixed(1);
-            let numAleatorio4 = ((Math.random() * 2) + 7).toFixed(1);
-            let numAleatorio5 = ((Math.random() * 2) + 7).toFixed(1);
+        for (let i = 0; i < qtdVoltas; i++) {
+            resultadoConteudo.innerHTML += `<br> Volta ${i + 1} <br>`;
 
-            vetorCavalos[0].voltas.push(numAleatorio1);
-            vetorCavalos[1].voltas.push(numAleatorio2);
-            vetorCavalos[2].voltas.push(numAleatorio3);
-            vetorCavalos[3].voltas.push(numAleatorio4);
-            vetorCavalos[4].voltas.push(numAleatorio5);
+            for (let c = 0; c < vetorCavalos.length; c++) {
+                let tempoVolta = Number(((Math.random() * 2) + 7).toFixed(1));
 
-            vetorCavalos[0].tempoTotal += Number(numAleatorio1);
-            vetorCavalos[1].tempoTotal += Number(numAleatorio2);
-            vetorCavalos[2].tempoTotal += Number(numAleatorio3);
-            vetorCavalos[3].tempoTotal += Number(numAleatorio4);
-            vetorCavalos[4].tempoTotal += Number(numAleatorio5);
+                vetorCavalos[c].voltas.push(tempoVolta);
+                vetorCavalos[c].tempoTotal += tempoVolta;
 
-            resultadoConteudo.innerHTML += `
-                <br> Volta ${i + 1} <br>
-                Cavalo ${vetorCavalos[0].nome} - Tempo da Volta: ${vetorCavalos[0].voltas[i]} - Tempo total: ${(vetorCavalos[0].tempoTotal).toFixed(1)} <br>
-                Cavalo ${vetorCavalos[1].nome} - Tempo da Volta: ${vetorCavalos[1].voltas[i]} - Tempo total: ${(vetorCavalos[1].tempoTotal).toFixed(1)} <br>
-                Cavalo ${vetorCavalos[2].nome} - Tempo da Volta: ${vetorCavalos[2].voltas[i]} - Tempo total: ${(vetorCavalos[2].tempoTotal).toFixed(1)} <br>
-                Cavalo ${vetorCavalos[3].nome} - Tempo da Volta: ${vetorCavalos[3].voltas[i]} - Tempo total: ${(vetorCavalos[3].tempoTotal).toFixed(1)} <br>
-                Cavalo ${vetorCavalos[4].nome} - Tempo da Volta: ${vetorCavalos[4].voltas[i]} - Tempo total: ${(vetorCavalos[4].tempoTotal).toFixed(1)} <br>
+                resultadoConteudo.innerHTML += `
+                    ${vetorCavalos[c].nome} - Tempo da Volta: ${tempoVolta.toFixed(1)} - Tempo total: ${vetorCavalos[c].tempoTotal.toFixed(1)} <br>
                 `;
-
+            }
         }
+
 
 
         let primeiro_ind = 0;
