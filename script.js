@@ -37,11 +37,11 @@ function apostar() {
 
             resultadoConteudo.innerHTML += `
                 <br> Volta ${i + 1} <br>
-                Cavalo ${vetorCavalos[0].numCavalo} - Tempo da Volta: ${vetorCavalos[0].voltas[i]} - Tempo total: ${(vetorCavalos[0].tempoTotal).toFixed(1)} <br>
-                Cavalo ${vetorCavalos[1].numCavalo} - Tempo da Volta: ${vetorCavalos[1].voltas[i]} - Tempo total: ${(vetorCavalos[1].tempoTotal).toFixed(1)} <br>
-                Cavalo ${vetorCavalos[2].numCavalo} - Tempo da Volta: ${vetorCavalos[2].voltas[i]} - Tempo total: ${(vetorCavalos[2].tempoTotal).toFixed(1)} <br>
-                Cavalo ${vetorCavalos[3].numCavalo} - Tempo da Volta: ${vetorCavalos[3].voltas[i]} - Tempo total: ${(vetorCavalos[3].tempoTotal).toFixed(1)} <br>
-                Cavalo ${vetorCavalos[4].numCavalo} - Tempo da Volta: ${vetorCavalos[4].voltas[i]} - Tempo total: ${(vetorCavalos[4].tempoTotal).toFixed(1)} <br>
+                Cavalo ${vetorCavalos[0].nome} - Tempo da Volta: ${vetorCavalos[0].voltas[i]} - Tempo total: ${(vetorCavalos[0].tempoTotal).toFixed(1)} <br>
+                Cavalo ${vetorCavalos[1].nome} - Tempo da Volta: ${vetorCavalos[1].voltas[i]} - Tempo total: ${(vetorCavalos[1].tempoTotal).toFixed(1)} <br>
+                Cavalo ${vetorCavalos[2].nome} - Tempo da Volta: ${vetorCavalos[2].voltas[i]} - Tempo total: ${(vetorCavalos[2].tempoTotal).toFixed(1)} <br>
+                Cavalo ${vetorCavalos[3].nome} - Tempo da Volta: ${vetorCavalos[3].voltas[i]} - Tempo total: ${(vetorCavalos[3].tempoTotal).toFixed(1)} <br>
+                Cavalo ${vetorCavalos[4].nome} - Tempo da Volta: ${vetorCavalos[4].voltas[i]} - Tempo total: ${(vetorCavalos[4].tempoTotal).toFixed(1)} <br>
                 `;
 
         }
@@ -87,16 +87,16 @@ function apostar() {
 
         if (primeiro == segundo) {
             if (primeiro == terceiro) {
-                if (vetorCavalos[segundo_ind].voltas[6] < vetorCavalos[primeiro_ind].voltas[6] && vetorCavalos[segundo_ind].voltas[6] < vetorCavalos[terceiro_ind].voltas[6]) {
+                if (vetorCavalos[segundo_ind].voltas[qtdVoltas - 1] < vetorCavalos[primeiro_ind].voltas[qtdVoltas - 1] && vetorCavalos[segundo_ind].voltas[qtdVoltas - 1] < vetorCavalos[terceiro_ind].voltas[qtdVoltas - 1]) {
                     primeiro = vetorCavalos[segundo_ind].tempoTotal;
                     primeiro_ind = segundo_ind;
-                } else if (vetorCavalos[terceiro_ind].voltas[6] < vetorCavalos[primeiro_ind].voltas[6] && vetorCavalos[terceiro_ind].voltas[6] < vetorCavalos[segundo_ind].voltas[6]) {
+                } else if (vetorCavalos[terceiro_ind].voltas[qtdVoltas - 1] < vetorCavalos[primeiro_ind].voltas[qtdVoltas - 1] && vetorCavalos[terceiro_ind].voltas[qtdVoltas - 1] < vetorCavalos[segundo_ind].voltas[qtdVoltas - 1]) {
                     primeiro = vetorCavalos[terceiro_ind].tempoTotal;
                     primeiro_ind = terceiro_ind;
                 }
             }
         } else if (segundo == terceiro) {
-            if (vetorCavalos[terceiro_ind].voltas[6] < vetorCavalos[segundo_ind].voltas[6]) {
+            if (vetorCavalos[terceiro_ind].voltas[qtdVoltas - 1] < vetorCavalos[segundo_ind].voltas[qtdVoltas - 1]) {
                 segundo = vetorCavalos[terceiro_ind].tempoTotal;
                 segundo_ind = terceiro_ind;
 
@@ -113,9 +113,9 @@ function apostar() {
         vetorPodio.push(primeiro);
         vetorPodio.push(segundo);
         vetorPodio.push(terceiro);
-        resultadoConteudo.innerHTML += `<br> Primeiro: Cavalo 0${vetorCavalos[primeiro_ind].numCavalo} | Tempo Total: ${(vetorPodio[0]).toFixed(1)}  <br>
-           Segundo: Cavalo 0${vetorCavalos[segundo_ind].numCavalo} | Tempo Total: ${(vetorPodio[1]).toFixed(1)} <br>
-           Terceiro: Cavalo 0${vetorCavalos[terceiro_ind].numCavalo} | Tempo Total: ${(vetorPodio[2]).toFixed(1)} <br>`;
+        resultadoConteudo.innerHTML += `<br> Primeiro: Cavalo 0${vetorCavalos[primeiro_ind].nome} | Tempo Total: ${(vetorPodio[0]).toFixed(1)}  <br>
+           Segundo: Cavalo 0${vetorCavalos[segundo_ind].nome} | Tempo Total: ${(vetorPodio[1]).toFixed(1)} <br>
+           Terceiro: Cavalo 0${vetorCavalos[terceiro_ind].nome} | Tempo Total: ${(vetorPodio[2]).toFixed(1)} <br>`;
 
         if (cavaloEscolhido == primeiro_ind + 1) {
             resultadoConteudo.innerHTML += `<br> Parabéns, você ganhou R$ ${(valorApostar * 2).toFixed(2)}.`;
@@ -176,11 +176,6 @@ function adicionarCavalo() {
 
         div_cavalos.innerHTML = '';
 
-        if (vetorCavalos.length == qtdCavalo) {
-            apostar()
-            return;
-        }
-
         for (let i = 0; i < vetorCavalos.length; i++) {
             div_cavalos.innerHTML += `<div id="cavalo${i + 1}" class="box_menor">
                     <div class="cavalo" style="background-image: url(imagens/cavalo${i + 1}.png);"></div>
@@ -188,7 +183,10 @@ function adicionarCavalo() {
                     <input type="radio" id="aposta_cavalo3" value="3" name="opcao" placeholder="R$">
                 </div><br>`
         }
-        
+        if (vetorCavalos.length == qtdCavalo) {
+            apostar()
+
+        }
     }
 
     if (getComputedStyle(dados_da_corrida).display == "block" && vetorCavalos.length == 2) {
