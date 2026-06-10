@@ -1,32 +1,6 @@
+let vetorCavalos = [];
 function apostar() {
     resultadoConteudo.innerHTML = '';
-    let vetorCavalos = [
-        {
-            numCavalo: 1,
-            voltas: [],
-            tempoTotal: 0,
-        },
-        {
-            numCavalo: 2,
-            voltas: [],
-            tempoTotal: 0,
-        },
-        {
-            numCavalo: 3,
-            voltas: [],
-            tempoTotal: 0,
-        },
-        {
-            numCavalo: 4,
-            voltas: [],
-            tempoTotal: 0,
-        },
-        {
-            numCavalo: 5,
-            voltas: [],
-            tempoTotal: 0,
-        }
-    ];
 
     let vetorTemposTotais = [];
     let vetorPodio = [];
@@ -157,6 +131,54 @@ function apostar() {
 
 function voltar() {
     resultado.style.display = 'none';
-    result.style.display=  'none';
+    result.style.display = 'none';
     divEscolherCavalo.style.display = 'block';
+}
+let qtdCavalo = 0
+let qtdVoltas = 0
+
+function avancarProximaDiv() {
+    qtdCavalo = Number(ipt_quant_cavalos.value.trim())
+    qtdVoltas = Number(ipt_quant_voltas.value.trim())
+    if (!qtdCavalo || !qtdVoltas) {
+        alert("Preencha todos os campos")
+    }
+    else if (qtdCavalo > 6) {
+        alert("O numero de cavalos deve ser entre 2 e 6")
+    }
+    else if (qtdCavalo < 2) {
+        alert("O numero de cavalos deve ser entre 2 e 6")
+    }
+    else if (qtdVoltas > 10) {
+        alert("O numero de voltas deve ser entre 5 e 10")
+    }
+    else if (qtdVoltas < 5) {
+        alert("O numero de voltas deve ser entre 5 e 10")
+    }
+    else {
+        divEscolherCavalo.style.display = 'block';
+        dados_da_corrida.style.display = 'none';
+    }
+}
+
+
+function adicionarCavalo() {
+    let nomeCavalo = (iptNomeCavalo.value.trim()).toUpperCase();
+    if (vetorCavalos == qtdCavalo) {
+
+    }
+    else {
+        vetorCavalos.push({
+            nome: nomeCavalo,
+            voltas: [],
+            tempoTotal: 0
+        })
+        div_cavalos += vetorCavalos[vetorCavalos.length-1].nome
+    }
+
+     if(getComputedStyle(dados_da_corrida).display == "block" && vetorCavalos.length == 2)
+        {
+        fala1.style.display = "none";   
+        fala2.style.display = "block";}
+      
 }

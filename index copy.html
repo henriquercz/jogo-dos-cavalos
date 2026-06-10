@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="site.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="script.js"></script>
+    <title>Corrida de Cavalos</title>
+
+    <!-- Grupo 08 - 1SIS -->
+
+</head>
+
+<body>
+    <div class="fundo">
+
+
+        <div class="ficha">
+            <h2>Créditos Disponíveis: <span id="spanCreditos"></span></h2>
+        </div>
+        <div class="titulo2"></div>
+        <div class="box">
+            <div id="dados_da_corrida" class="dados_da_corrida">
+                <div style="display: flex
+                ;">
+                    <div class="card">
+                        <p>Quantidade de cavalos</p><input type="number" id="ipt_quant_cavalos">
+                    </div>
+                </div>
+                <div style="display: flex;">
+                    <div class="card">
+                        <p> Quantidade de voltas</p><input type="number" id="ipt_quant_voltas">
+                    </div>
+                </div>
+
+                <button onclick="avancarProximaDiv()" class="btn-avancar">Avançar</button>
+
+            </div>
+
+            <div id="divEscolherCavalo" class="divEscolherCavalo" style="display: none;">
+                <h3 class="box_menor">
+                    Insira o nome do cavalo: <input type="text" id="iptNomeCavalo">
+                    <button onclick="adicionarCavalo()">Adicionar</button>
+                </h3>
+                <div id="div_cavalos"></div>
+            </div>
+
+            <input type="number" style="display: none;" placeholder="Valor de aposta" class="valor" id="iptValorAposta">
+            <button class="aposta" style="display: none;" onclick="apostar()"></button>
+
+            <div class="result" id="resultado">
+                <div id="resultadoConteudo"></div>
+            </div>
+        </div>
+
+    </div>
+    </div>
+</body>
+<script>
+    var creditosTotais = 10;
+    spanCreditos.innerHTML = creditosTotais;
+</script>
+
+</html>

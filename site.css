@@ -1,3 +1,4 @@
+@import url(https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600&display=swap);
 * {
     padding: 0;
     margin: 0;
@@ -28,7 +29,7 @@ body {
 }
 
 .ficha {
-
+    display: block;
     position: absolute;
     margin-left: 1500px;
 }
@@ -51,7 +52,6 @@ body {
     background-image: url(imagens/logo.png);
     background-position: center;
     background-size: cover;
-
     position: absolute;
 }
 
@@ -84,7 +84,6 @@ body {
     font-family: 'Pixelify Sans', sans-serif;
     font-weight: 700;
 
-
     z-index: 20;
     transition: 0.3s;
     position: absolute;
@@ -105,6 +104,7 @@ body {
     display: flex;
     align-items: center;
     justify-items: center;
+    margin-top: 70px;
 
 }
 
@@ -196,3 +196,68 @@ p {
 .aposta:hover {
     transform: scale(1.10);
 }
+
+.dados_da_corrida {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+    width: 80%;
+    height: 80%;
+    margin-top: 70px;
+}
+
+.dados_da_corrida input {
+    width: 40px;
+    margin-left: 30px;
+    height: 20px;
+    font-size: 17px;
+}
+
+.dados_da_corrida p {
+    font-size: 28px;
+    font-family: 'Pixelify Sans', sans-serif;
+    font-weight: 700;
+    color: rgb(0, 0, 0);
+}
+.card{
+    background-color: rgb(255, 255, 255);
+    width: 400px;
+    height: 50px;
+    align-items: center;
+    display: flex;
+    border-radius: 10px;
+
+}
+
+.btn-avancar {
+    height: 50px;
+    width: 400px;
+    border: 2px solid rgb(255, 0, 0);
+    border-radius: 20px;
+    font-size: 20px;
+    font-weight: 700;
+}
+.btn-avancar:hover {
+transform
+}
+
+.divEscolherCavalo h3{
+    color: white;
+}
+
+.divEscolherCavalo input {
+    border: 2px solid;
+    margin-left: 200px;
+    margin-bottom: 10px;
+    height: 40px;
+}
+
+.divEscolherCavalo button {
+    width: 80px;
+    height: 40px;
+    margin-left: 300px;
+    border: 2px solid;
+    border-radius: 20px;
+}
+
