@@ -108,7 +108,7 @@ function apostar() {
            Segundo: Cavalo 0${vetorCavalos[segundo_ind].nome} | Tempo Total: ${(vetorPodio[1]).toFixed(1)} <br>
            Terceiro: Cavalo 0${vetorCavalos[terceiro_ind].nome} | Tempo Total: ${(vetorPodio[2]).toFixed(1)} <br>`;
 
-        if (cavaloEscolhido == primeiro_ind + 1) {
+        if (Number(cavaloEscolhido.value) == primeiro_ind) {
             resultadoConteudo.innerHTML += `<br> Parabéns, você ganhou R$ ${(valorApostar * 2).toFixed(2)}.`;
             creditosTotais += valorApostar;
             spanCreditos.innerHTML = creditosTotais;
@@ -117,6 +117,7 @@ function apostar() {
             creditosTotais -= valorApostar;
             spanCreditos.innerHTML = creditosTotais;
         }
+
     }
 }
 
