@@ -116,6 +116,27 @@ body {
 }
 
 
+.btn-avancar {
+   background-image: url(imagens/avançar.png);
+    background-position: center;
+    background-size: cover;
+    background-color: rgba(240, 248, 255, 0);
+    border: none;
+    height: 115px;
+    width: 400px;
+    font-size: 20px;
+    font-weight: 700;
+    transition: 0.3s;
+    cursor: pointer;
+
+
+}
+
+.btn-avancar::hover{
+    transform: scale(1.10);
+
+}
+
 
 .cavalo {
     border-radius: 100px;
@@ -229,15 +250,6 @@ p {
     display: flex;
     border-radius: 10px;
 
-}
-
-.btn-avancar {
-    height: 50px;
-    width: 400px;
-    border: 2px solid rgb(255, 0, 0);
-    border-radius: 20px;
-    font-size: 20px;
-    font-weight: 700;
 }
 
 /* .btn-avancar:hover {
