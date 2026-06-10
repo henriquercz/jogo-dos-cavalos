@@ -57,7 +57,9 @@ body {
 
 .box {
     border-radius: 30px;
-    background-color: rgba(0, 0, 0, 0.834);
+    background-image: url(imagens/box_grande.png);
+    background-position: center;
+    background-size: cover;
 
     height: 680px;
     width: 700px;
