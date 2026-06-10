@@ -62,19 +62,22 @@ body {
     border-radius: 30px;
     background-image: url(imagens/box_grande.png);
     background-position: center;
+    background-repeat: no-repeat;
     background-size: cover;
-    height: auto;
-    min-height: 500px;
-    max-height: 90vh;
-    width: 700px;
-    margin-top: 200px;
+
+
+    height: 700px;
+    width: 750px;
+
+    margin-top: 180px;
     padding: 20px;
-    box-sizing: border-box;
+
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    /*overflow-y: auto;*/
+
+
 }
 
 .botao {
@@ -131,7 +134,7 @@ body {
 }
 
 p {
-    font-size: 25px;
+    font-size: 10px;
     margin-left: 15px;
     font-family: "Press Start 2P", sans-serif;
 }
@@ -201,23 +204,29 @@ p {
 }
 
 .dados_da_corrida input {
-    width: 40px;
+    width: 50px;
     margin-left: 30px;
     height: 20px;
     font-size: 17px;
+    border-radius: 20px;
+    text-align: center;
 }
 
 .dados_da_corrida p {
-    font-size: 28px;
+    font-size: 18px;
     /*font-family: 'Pixelify Sans', sans-serif;*/
     font-weight: 700;
-    color: rgb(0, 0, 0);
+    color: rgb(63, 35, 18);
 }
 
 .card {
-    background-color: rgb(255, 255, 255);
-    width: 400px;
-    height: 50px;
+    background-image: url(imagens/cardcavalo.png);
+    background-position: center;
+    background-size: cover;
+    padding-left: 40px;
+    width: 520px;
+    height: 190px;
+    gap: 0px;
     align-items: center;
     display: flex;
     border-radius: 10px;
