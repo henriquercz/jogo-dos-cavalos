@@ -240,20 +240,23 @@ transform
     color: white;
 }
 
-.divEscolherCavalo input {
+#iptNomeCavalo {
     border: 2px solid;
-    margin-left: 250px;
-    margin-bottom: 10px;
     height: 40px;
+    border-radius: 10px;
+    padding: 0 10px;
+    width: 200px;
+    font-size: 16px;
 }
 
-.divEscolherCavalo button {
-    width: 80px;
+#divCadastroNome button {
+    width: 120px;
     height: 40px;
-    margin-left: 250px;
     border: 2px solid;
     border-radius: 20px;
-
+    cursor: pointer;
+    background-color: white;
+    font-weight: bold;
 }
 
 .divEscolherCavalo p {
