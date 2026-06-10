@@ -23,17 +23,25 @@
         <div class="titulo2"></div>
         <div class="box">
             <div id="dados_da_corrida" class="dados_da_corrida">
-                <div style="display: flex
-                ;">
+                <div style="display: flex;">
                     <div class="card">
                         <p>Quantidade de cavalos</p><input type="number" id="ipt_quant_cavalos">
                     </div>
                 </div>
+
                 <div style="display: flex;">
                     <div class="card">
                         <p> Quantidade de voltas</p><input type="number" id="ipt_quant_voltas">
                     </div>
                 </div>
+                <div style="display: flex;">
+                    <div class="card">
+                        <p> Insira valor da Aposta</p><input type="number" placeholder="Valor de aposta"
+                            id="iptValorAposta">
+                    </div>
+                </div>
+
+
 
                 <button onclick="avancarProximaDiv()" class="btn-avancar">Avançar</button>
 
@@ -41,13 +49,15 @@
 
             <div id="divEscolherCavalo" class="divEscolherCavalo" style="display: none;">
                 <h3 class="box_menor">
-                    <p>Insira o nome do cavalo:</p>  <input type="text" id="iptNomeCavalo">
+                    <p>Insira o nome do cavalo:</p> <input type="text" id="iptNomeCavalo">
                     <button onclick="adicionarCavalo()">Adicionar</button>
                 </h3>
-                <div id="div_cavalos"></div>
-                <h3 id="cavalo1" class="box_menor">
-                    
-                </h3>
+                <div id="div_cavalos">
+                    <h3 id="cavalo1" class="box_menor">
+
+                    </h3>
+                </div>
+
             </div>
 
             <input type="number" style="display: none;" placeholder="Valor de aposta" class="valor" id="iptValorAposta">
@@ -58,7 +68,6 @@
             </div>
         </div>
 
-    </div>
     </div>
 </body>
 <script>
