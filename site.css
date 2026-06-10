@@ -248,7 +248,7 @@ transform
 
 .divEscolherCavalo input {
     border: 2px solid;
-    margin-left: 200px;
+    margin-left: 250px;
     margin-bottom: 10px;
     height: 40px;
 }
@@ -256,8 +256,14 @@ transform
 .divEscolherCavalo button {
     width: 80px;
     height: 40px;
-    margin-left: 300px;
+    margin-left: 250px;
     border: 2px solid;
     border-radius: 20px;
+
+}
+
+.divEscolherCavalo p {
+    color: black;
+    font-size: 20px;
 }
 

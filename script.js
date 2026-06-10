@@ -174,6 +174,11 @@ function adicionarCavalo() {
             tempoTotal: 0
         })
         div_cavalos += vetorCavalos[vetorCavalos.length-1].nome
+
+        for (let i = 0; i < vetorCavalos.length; i++) {
+            cavalo1.innerHTML = `${i + 1} - ${vetorCavalos[i]}<br>`
+        }
+       
     }
 
      if(getComputedStyle(dados_da_corrida).display == "block" && vetorCavalos.length == 2)
