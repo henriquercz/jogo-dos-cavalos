@@ -31,9 +31,10 @@ body {
 }
 
 .ficha {
-    display: block;
+    display: flex;
     position: absolute;
-    margin-left: 1500px;
+    margin-left: 1470px;
+    margin-top: 20px;
 }
 
 .titulo {
@@ -73,7 +74,7 @@ body {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    overflow-y: auto;
+    /*overflow-y: auto;*/
 }
 
 .botao {
@@ -273,4 +274,3 @@ transform
     align-items: center;
     gap: 10px;
 }
-
